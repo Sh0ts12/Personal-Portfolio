@@ -3,18 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Mattias Nordin - Portfolio</title>
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
+    <!-- HEADER SECTION -->
     <header>
-        <h1>Welcome to My Portfolio</h1>
+        <div class="header-container">
+            <div class="logo">Mattias Nordin</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Work</a></li>
+                    <li><a href="#">Resume</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
-        <!-- Your content here (e.g., hero section, projects, about me, contact) -->
-    </main>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Hey there, I'm Mattias — a designer</h1>
+            <p>Who cares about making <span class="highlight">beautiful</span> things that help <span class="highlight">people</span>.</p>
+            <p class="scroll">Scroll to discover ↓</p>
+        </div>
+    </section>
+
+    <!-- PROJECT GRID SECTION -->
+    <section id="projects" class="container">
+        <h2 class="grid-sub-title">Recent Work</h2>
+        <ul class="project-list">
+            <li class="project-item">
+                <div class="stripe"></div>
+                <span class="project-title">BOGO</span>
+                <span class="project-category">UX/UI Case Study</span>
+            </li>
+            <li class="project-item">
+                <div class="stripe"></div>
+                <span class="project-title">Project name 2</span>
+                <span class="project-category">Game Development</span>
+            </li>
+            <li class="project-item">
+                <div class="stripe"></div>
+                <span class="project-title">Project name 3</span>
+                <span class="project-category">UI Interaction</span>
+            </li>
+            <li class="project-item">
+                <div class="stripe"></div>
+                <span class="project-title">Project name 4</span>
+                <span class="project-category">VR/AR Development</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <p>&copy; 2024 Mattias Nordin. All rights reserved.</p>
     </footer>
     <script src="script.js"></script>
 </body>
