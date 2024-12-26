@@ -5,8 +5,12 @@
     box-sizing: border-box;
 }
 
+:root {
+    --container-padding: clamp(2.5em, 8vw, 8em); /* Adjusted for consistency */
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     background: #000;
     color: #fff;
     line-height: 1.6;
@@ -15,11 +19,11 @@ body {
 
 /* ========== HEADER ========== */
 header {
-    background: rgba(0, 0, 0, 0.8);
+    background: transparent;
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem var(--container-padding);
 }
 
 .header-container {
@@ -30,8 +34,8 @@ header {
 }
 
 header .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1rem;
+    font-weight: lighter;
     cursor: pointer;
 }
 
@@ -49,7 +53,7 @@ header .nav-links a {
 }
 
 header .nav-links a:hover {
-    color: #a855f7;
+    color: #ff0095;
 }
 
 /* ========== HERO SECTION ========== */
@@ -59,32 +63,30 @@ header .nav-links a:hover {
     align-items: center;
     height: 90vh;
     text-align: center;
-    background: radial-gradient(circle, rgba(0, 0, 0, 1) 60%, rgba(20, 20, 20, 1) 100%);
-    padding: 2rem var(--container-padding, 2rem);
+    padding: 2rem var(--container-padding);
     position: relative;
-}
-
-.hero-content h1 {
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    margin-bottom: 1rem;
-    font-weight: bold;
-    line-height: 1.2;
+    overflow: hidden;
+    background: transparent;
 }
 
 .hero-content p {
-    font-size: clamp(1rem, 1.5vw, 1.3rem);
-    margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 60ch;
+    margin: 0 auto 2rem;
+    text-align: center;
 }
 
 .hero-content .highlight {
-    color: #a855f7;
+    color: #ff0095;
     font-weight: bold;
 }
 
 .hero-content .scroll {
     position: absolute;
     bottom: 2rem;
-    right: var(--container-padding, 2rem);
+    right: var(--container-padding);
     font-size: 0.9rem;
     opacity: 0.7;
     text-align: right;
@@ -93,93 +95,98 @@ header .nav-links a:hover {
 
 /* ========== PROJECTS SECTION ========== */
 #projects {
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    max-width: 100em;
+    padding: 4rem 0;
+    margin-top: 4rem;
 }
 
-/* Grid Subtitle */
 .grid-sub-title {
-    text-align: left;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
-    margin-bottom: 2rem;
-    color: var(--color-gray, rgba(200, 200, 200, 0.7));
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    color: rgba(200, 200, 200, 0.7);
+    padding-left: 1rem;
 }
 
-/* Project List */
-.project-list {
+/* Project Grid */
+.work-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
     list-style: none;
+    margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Project Item */
+/* Individual Project Item */
 .project-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
     cursor: pointer;
+    position: relative;
     transition: background 0.3s ease;
 }
 
-/* First Item Specific Fix */
-.project-item:first-child {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.project-item:last-child {
+    border-bottom: none;
 }
 
-/* Title & Category Alignment */
-.project-item .project-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--color-text-light, #fff);
-    flex: 1;
-    text-align: left;
+/* Project Title */
+.project-title {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 450;
+    font-size: clamp(1.8em, 2vw, 2.5em);
+    color: #fff;
+    padding-left: 1rem;
 }
 
-.project-item .project-description {
-    font-size: 1rem;
-    color: var(--color-gray, rgba(200, 200, 200, 0.7));
-    text-align: left;
-    margin-top: 0.2rem;
-}
-
-.project-item .project-category {
-    font-size: 1rem;
-    color: var(--color-gray, rgba(200, 200, 200, 0.7));
+.project-category {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 400;
+    font-size: clamp(1em, 1vw, 1.2em);
+    color: rgba(200, 200, 200, 0.7);
     text-align: right;
-    white-space: nowrap;
-    flex: 1;
+    padding-right: 1rem;
 }
 
-/* Hover Animation */
-.project-item:hover .project-title,
+/* Hover Effects */
+.project-title,
+.project-category {
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+.project-item:hover .project-title {
+    transform: translateX(-10px);
+    opacity: 0.5;
+    color: #d1d1d1;
+}
+
 .project-item:hover .project-category {
-    transform: translateY(-3px);
-    transition: transform 0.3s ease, color 0.3s ease;
+    transform: translateX(10px);
+    opacity: 0.5;
+    color: #d1d1d1;
 }
 
-/* Stripe Using ::after */
-.project-item::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--color-blue, rgba(168, 85, 247, 0.7));
-    transition: width 0.3s ease-in-out;
+/* ========== FOOTER ========== */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: rgba(200, 200, 200, 0.7);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.project-item:hover::after {
-    width: 100%;
+/* ========== CONTAINER STYLES ========== */
+.container {
+    margin: 0 auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    max-width: 100em;
 }
