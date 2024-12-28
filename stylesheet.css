@@ -39,6 +39,64 @@ header .logo {
     cursor: pointer;
 }
 
+/* ========== NAVBAR STYLES ========== */
+.nav-bar {
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    padding: calc(var(--container-padding) / 2) 0;
+}
+
+/* Container for spacing */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100em;
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+/* Logo Styling */
+.nav-logo a {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 450;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-logo a:hover {
+    color: #ff0095;
+}
+
+/* Navigation Links */
+.nav-links ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff0095;
+}
+
+
 header .nav-links {
     display: flex;
     gap: 1.5rem;
@@ -80,7 +138,7 @@ header .nav-links a:hover {
 
 .hero-content .highlight {
     color: #ff0095;
-    font-weight: bold;
+    font-weight: lighter;
 }
 
 .hero-content .scroll {
@@ -94,18 +152,33 @@ header .nav-links a:hover {
 }
 
 /* ========== PROJECTS SECTION ========== */
+
+
+/* Stripe Styles */
+.stripe {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.395);
+}
+
+.stripe.last {
+    background-color: rgba(255, 255, 255, 0.395);
+}
+
+
 #projects {
     padding: 4rem 0;
     margin-top: 4rem;
+    margin-bottom: 10rem;
 }
 
 .grid-sub-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 450;
     text-transform: uppercase;
     margin-bottom: 2rem;
-    color: rgba(200, 200, 200, 0.7);
+    color: rgba(255, 255, 255, 0.626);
     padding-left: 1rem;
 }
 
@@ -117,7 +190,7 @@ header .nav-links a:hover {
     list-style: none;
     margin: 0;
     padding: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    
 }
 
 /* Individual Project Item */
@@ -126,15 +199,12 @@ header .nav-links a:hover {
     justify-content: space-between;
     align-items: center;
     padding: 2rem 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
     position: relative;
     transition: background 0.3s ease;
 }
 
-.project-item:last-child {
-    border-bottom: none;
-}
+
 
 /* Project Title */
 .project-title {
@@ -175,12 +245,205 @@ header .nav-links a:hover {
 }
 
 /* ========== FOOTER ========== */
+
 footer {
+    background: #000;
+    padding: 6rem var(--container-padding);
     text-align: center;
-    padding: 1.5rem;
-    font-size: 0.9rem;
-    color: rgba(200, 200, 200, 0.7);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* Footer Top Section */
+.footer-top {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.footer-title {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+}
+
+/* ========== FOOTER CTA BUTTON ========== */
+.footer-cta {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem; /* Space between arrow and text */
+    overflow: hidden;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Arrow Styling */
+.footer-cta .arrow {
+    color: #fff; /* Default arrow color */
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    font-size: 1.5rem; /* Ensures consistent size */
+    margin-right: 0.3rem; /* Reduced spacing for consistency */
+}
+.footer-cta:hover .arrow,
+.footer-cta.copied .arrow {
+    color: #ff0095; /* Arrow turns pink on hover and copied */
+    transform: translateX(3px); /* Slight movement */
+}
+
+/* Text States */
+.footer-cta span {
+    display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease, color 0.3s ease;
+}
+
+/* Default Text */
+.footer-cta .default-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover Text */
+.footer-cta .hover-text {
+    opacity: 0;
+    transform: translateY(100%);
+    position: absolute;
+    top: 0;
+    left: calc(1.5rem + 0.75rem); /* Adjusted for arrow spacing */
+    width: 100%;
+    color: #ff0095; /* Pink on hover */
+}
+
+/* Copied Text */
+.footer-cta .copied-text {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: calc(1.5rem + 0.75rem); /* Adjusted for arrow spacing */
+    width: 100%;
+    color: #ff0095; /* Pink when copied */
+}
+
+/* Hover Effect */
+.footer-cta:hover .default-text {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.footer-cta:hover .hover-text {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Copied Effect */
+.footer-cta.copied .default-text,
+.footer-cta.copied .hover-text {
+    opacity: 0;
+    transform: translateY(0);
+}
+
+.footer-cta.copied .copied-text {
+    opacity: 1;
+    animation: flicker 0.5s ease-in-out;
+}
+
+/* Disable Hover During Copied State */
+.footer-cta.no-hover:hover .default-text,
+.footer-cta.no-hover:hover .hover-text {
+    transform: none;
+    opacity: 0;
+}
+
+/* Arrow Behavior in Copied State */
+.footer-cta.copied .arrow,
+.footer-cta.no-hover .arrow {
+    color: #ff0095 !important; /* Arrow stays pink */
+    transform: none !important; /* Prevent any movement */
+}
+
+/* Ensure Copied Text Stays Visible */
+.footer-cta.no-hover .copied-text {
+    opacity: 1;
+    animation: flicker 0.5s ease-in-out;
+}
+
+/* Flicker Animation */
+@keyframes flicker {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+
+/* ========== FOOTER BOTTOM ========== */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Version and Local Time */
+.footer-version-time {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-start;
+}
+
+.footer-version,
+.footer-time {
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: left;
+}
+
+.footer-version strong,
+.footer-time strong {
+    display: block;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Socials Section */
+.footer-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.socials-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.socials-list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.socials-list a {
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+}
+
+.socials-list a:hover {
+    color: #ff0095;
 }
 
 /* ========== CONTAINER STYLES ========== */

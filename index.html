@@ -12,11 +12,13 @@
   </head>
   <body>
     <!-- Header Section -->
-    <header>
-      <div class="header-container">
-        <div class="logo">Mattias Nordin</div>
-        <nav>
-          <ul class="nav-links">
+    <header class="nav-bar">
+      <div class="container nav-container">
+        <div class="nav-logo">
+          <a href="#">Mattias Nordin</a>
+        </div>
+        <nav class="nav-links">
+          <ul>
             <li><a href="#">Work</a></li>
             <li><a href="#">Resume</a></li>
             <li><a href="#">Contact</a></li>
@@ -42,21 +44,60 @@
       <div class="container">
         <h2 class="grid-sub-title">Recent Work</h2>
         <ul class="work-grid">
+          <div class="stripe"></div>
+
           <li class="project-item">
             <h3 class="project-title">BOGO</h3>
             <span class="project-category">UX/UI Design Project</span>
           </li>
+          <div class="stripe"></div>
+
           <li class="project-item">
             <h3 class="project-title">Another Project</h3>
             <span class="project-category">Category</span>
           </li>
+          <div class="stripe last"></div>
         </ul>
       </div>
     </section>
-
-    <!-- Footer -->
+    <!-- ========== FOOTER SECTION ========== -->
     <footer>
-      <p>© 2024 Mattias Nordin. All rights reserved.</p>
+      <!-- Footer Top Section -->
+      <div class="footer-top">
+        <h2 class="footer-title">Interested in working together?</h2>
+        <a href="#" class="footer-cta" id="copy-email">
+          <span class="arrow">→</span>
+          <span class="default-text">Get in touch.</span>
+          <span class="hover-text">Copy mail?</span>
+          <span class="copied-text">Copied!</span>
+        </a>
+      </div>
+
+      <!-- Footer Bottom Section -->
+      <div class="footer-bottom">
+        <div class="footer-info">
+          <div class="footer-version-time">
+            <span class="footer-version">
+              Version<br /><strong>v1.1.10</strong>
+            </span>
+            <span class="footer-time">
+              Local time<br /><strong>12:23</strong>
+            </span>
+          </div>
+        </div>
+        <div class="footer-socials">
+          <div class="socials-container">
+            <h4 class="socials-title">Socials</h4>
+            <ul class="socials-list">
+              <li><a href="#">LinkedIn</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
