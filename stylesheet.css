@@ -349,17 +349,11 @@ footer {
     transform: translateY(0);
     opacity: 1;
     color: #ff0095;
-    animation: flicker 2s ease-in-out infinite;
+    animation: flicker 1.2s ease-in-out forwards;
 }
 
 
-.footer-cta.no-hover:hover .default-text,
-.footer-cta.no-hover:hover .hover-text {
-    opacity: 0 !important;
-    transform: translateY(-100%) !important;
-}
-
-
+/* responsable for not allowing for overlapping of end animation*/
 .footer-cta.no-hover .default-text,
 .footer-cta.no-hover .hover-text {
     opacity: 0 !important;
@@ -368,23 +362,27 @@ footer {
 
 
 .footer-cta.no-hover .copied-text {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    animation: flicker 2s ease-in-out infinite;
+    opacity: 1 ;
+    transform: translateY(0) ;
+    animation: flicker 2s ease-in-out forwards;
 }
 
 /* Arrow Behavior in Copied State */
 .footer-cta.copied .arrow,
-.footer-cta.no-hover .arrow {
+.footer-cta.no-hovers .arrow {
     color: #ff0095; 
     transform: none; 
 }
 
 /* Flicker Animation for Copied Text */
 @keyframes flicker {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 1; }
-}
+    0% {opacity:0;}
+    9% {opacity:0;}
+    10% {opacity:.5;}
+    13% {opacity:0;}
+    20% {opacity:.5;}
+    25% {opacity:1;}
+    }
 
 /* ========== FOOTER BOTTOM ========== */
 .footer-bottom {
