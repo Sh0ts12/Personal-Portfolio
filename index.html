@@ -8,6 +8,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mattias Nordin - Portfolio</title>
+    <!-- Link to your updated stylesheet -->
     <link rel="stylesheet" href="stylesheet.css" />
   </head>
   <body>
@@ -60,16 +61,22 @@
         </ul>
       </div>
     </section>
+
     <!-- ========== FOOTER SECTION ========== -->
     <footer>
       <!-- Footer Top Section -->
       <div class="footer-top">
         <h2 class="footer-title">Interested in working together?</h2>
-        <a href="#" class="footer-cta" id="copy-email">
+
+        <!-- Footer CTA with text wrapper -->
+        <!-- Removed href="#" so clicking won't jump to the top -->
+        <a class="footer-cta" id="copy-email">
           <span class="arrow">→</span>
-          <span class="default-text">Get in touch.</span>
-          <span class="hover-text">Copy mail?</span>
-          <span class="copied-text">Copied!</span>
+          <span class="text-wrapper">
+            <span class="default-text">Get in touch.</span>
+            <span class="hover-text">Copy email?</span>
+            <span class="copied-text">Copied!</span>
+          </span>
         </a>
       </div>
 
@@ -98,6 +105,7 @@
       </div>
     </footer>
 
+    <!-- Your JavaScript -->
     <script src="script.js"></script>
   </body>
 </html>

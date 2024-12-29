@@ -96,7 +96,6 @@ header .logo {
     color: #ff0095;
 }
 
-
 header .nav-links {
     display: flex;
     gap: 1.5rem;
@@ -153,7 +152,6 @@ header .nav-links a:hover {
 
 /* ========== PROJECTS SECTION ========== */
 
-
 /* Stripe Styles */
 .stripe {
     width: 100%;
@@ -164,7 +162,6 @@ header .nav-links a:hover {
 .stripe.last {
     background-color: rgba(255, 255, 255, 0.395);
 }
-
 
 #projects {
     padding: 4rem 0;
@@ -190,7 +187,6 @@ header .nav-links a:hover {
     list-style: none;
     margin: 0;
     padding: 0;
-    
 }
 
 /* Individual Project Item */
@@ -203,8 +199,6 @@ header .nav-links a:hover {
     position: relative;
     transition: background 0.3s ease;
 }
-
-
 
 /* Project Title */
 .project-title {
@@ -245,7 +239,6 @@ header .nav-links a:hover {
 }
 
 /* ========== FOOTER ========== */
-
 footer {
     background: #000;
     padding: 6rem var(--container-padding);
@@ -278,9 +271,19 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem; /* Space between arrow and text */
-    overflow: hidden;
+    /*overflow: hidden;*/
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Force each state’s color so there’s no confusion */
+.footer-cta .default-text,
+.footer-cta .hover-text {
+  color: #fff;       /* white for default and hover text */
+}
+
+.footer-cta .copied-text {
+  color: #ff0095;    /* pink for copied text */
 }
 
 /* Arrow Styling */
@@ -297,88 +300,97 @@ footer {
     transform: translateX(3px); /* Slight movement */
 }
 
-/* Text States */
-.footer-cta span {
-    display: block;
-    transition: transform 0.3s ease, opacity 0.3s ease, color 0.3s ease;
-}
-
-/* Default Text */
-.footer-cta .default-text {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Hover Text */
-.footer-cta .hover-text {
+/* Generic hidden state for all text states */
+.footer-cta .text-wrapper span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 0;
     transform: translateY(100%);
-    position: absolute;
-    top: 0;
-    left: calc(1.5rem + 0.75rem); /* Adjusted for arrow spacing */
-    width: 100%;
-    color: #ff0095; /* Pink on hover */
 }
 
-/* Copied Text */
-.footer-cta .copied-text {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: calc(1.5rem + 0.75rem); /* Adjusted for arrow spacing */
-    width: 100%;
-    color: #ff0095; /* Pink when copied */
+.footer-cta .text-wrapper {
+    position: relative;
+    width: 15ch;             /* adjust as needed if text is longer */
+    min-height: 1.5em;       /* enough room for one line */
+    overflow: hidden;        /* so text slides “inside” */
+    white-space: nowrap;     /* no line wraps */
 }
 
-/* Hover Effect */
-.footer-cta:hover .default-text {
+/* The default text overrides the hidden state */
+.footer-cta .text-wrapper span.default-text {
+    opacity: 1;
+    transform: translateY(0);
+    color: #fff;
+}
+
+/* Hover effect: hide default, show hover text */
+.footer-cta:hover:not(.copied) .default-text {
     transform: translateY(-100%);
     opacity: 0;
 }
-
-.footer-cta:hover .hover-text {
+.footer-cta:hover:not(.copied) .hover-text {
     transform: translateY(0);
     opacity: 1;
+    color: #fff;  /* if you want hover text white */
 }
 
-/* Copied Effect */
+/* 
+   COPIED effect: hide default & hover, show copied text 
+   plus flicker animation
+*/
 .footer-cta.copied .default-text,
 .footer-cta.copied .hover-text {
+    transform: translateY(-100%);
     opacity: 0;
-    transform: translateY(0);
 }
-
 .footer-cta.copied .copied-text {
+    transform: translateY(0);
     opacity: 1;
-    animation: flicker 0.5s ease-in-out;
+    color: #ff0095;
+    /* Flicker for 2s. 
+       Use 'infinite' if you want it to blink the entire time; 
+       or 'forwards' if you want it to stop blinking at the end. */
+    animation: blinkFlicker 2s ease-in-out infinite;
 }
 
-/* Disable Hover During Copied State */
+/* Disable Hover During Copied State (more forceful) */
 .footer-cta.no-hover:hover .default-text,
 .footer-cta.no-hover:hover .hover-text {
-    transform: none;
-    opacity: 0;
+    opacity: 0 !important;
+    transform: translateY(-100%) !important;
+}
+
+/* Hide default & hover whenever .no-hover is present */
+.footer-cta.no-hover .default-text,
+.footer-cta.no-hover .hover-text {
+    opacity: 0 !important;
+    transform: translateY(-100%) !important;
+}
+
+/* Force copied-text to remain visible in .no-hover */
+.footer-cta.no-hover .copied-text {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    animation: blinkFlicker 2s ease-in-out infinite;
 }
 
 /* Arrow Behavior in Copied State */
 .footer-cta.copied .arrow,
 .footer-cta.no-hover .arrow {
-    color: #ff0095 !important; /* Arrow stays pink */
-    transform: none !important; /* Prevent any movement */
+    color: #ff0095;  /* Arrow stays pink */
+    transform: none; /* Prevent any movement */
 }
 
-/* Ensure Copied Text Stays Visible */
-.footer-cta.no-hover .copied-text {
-    opacity: 1;
-    animation: flicker 0.5s ease-in-out;
-}
-
-/* Flicker Animation */
-@keyframes flicker {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 1; }
-}
-
+/* Flicker Animation for Copied Text */
+@keyframes blinkFlicker {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
 
 /* ========== FOOTER BOTTOM ========== */
 .footer-bottom {
