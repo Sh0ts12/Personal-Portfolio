@@ -384,38 +384,54 @@ footer {
     25% {opacity:1;}
     }
 
-/* ========== FOOTER BOTTOM ========== */
-.footer-bottom {
+/* Footer Details Wrapper */
+.footer-details {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 2rem;
     margin-top: 2rem;
+    flex-wrap: wrap;
 }
 
-/* Version and Local Time */
-.footer-version-time {
+/* Footer Info Section */
+.footer-info {
     display: flex;
-    gap: 2rem;
-    justify-content: flex-start;
-}
-
-.footer-version,
-.footer-time {
-    font-size: clamp(0.9rem, 1vw, 1rem);
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.7);
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
     text-align: left;
 }
 
-.footer-version strong,
-.footer-time strong {
-    display: block;
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem; 
+}
+
+.info-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.info-title {
+    font-size: 1rem;
+    font-weight: 450;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.info-subtitle {
+    font-size: clamp(0.9rem, 1vw, 1rem);
     font-weight: 600;
     color: #fff;
 }
 
-/* Socials Section */
+/* Footer Socials Section */
 .footer-socials {
     display: flex;
     flex-direction: column;
@@ -424,25 +440,32 @@ footer {
     text-align: left;
 }
 
-.socials-title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #fff;
-}
-
 .socials-list {
-    display: flex;
-    gap: 1.5rem;
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    gap: 1.5rem; 
+}
+
+.socials-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.socials-title {
+    font-size: 1rem;
+    font-weight: 450;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercse;
+    letter-spacing: 0.05em;
 }
 
 .socials-list a {
     font-size: clamp(0.9rem, 1vw, 1rem);
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.7);
+    color: #fff;
     transition: color 0.3s ease;
 }
 
