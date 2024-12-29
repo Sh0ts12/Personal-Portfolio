@@ -6,7 +6,7 @@
 }
 
 :root {
-    --container-padding: clamp(2.5em, 8vw, 8em); /* Adjusted for consistency */
+    --container-padding: clamp(2.5em, 8vw, 8em);  
 }
 
 body {
@@ -270,37 +270,37 @@ footer {
     position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem; /* Space between arrow and text */
-    /*overflow: hidden;*/
+    gap: 0.75rem; 
+    overflow: hidden;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Force each state’s color so there’s no confusion */
+
 .footer-cta .default-text,
 .footer-cta .hover-text {
-  color: #fff;       /* white for default and hover text */
+  color: #fff;       
 }
 
 .footer-cta .copied-text {
-  color: #ff0095;    /* pink for copied text */
+  color: #ff0095;   
 }
 
 /* Arrow Styling */
 .footer-cta .arrow {
-    color: #fff; /* Default arrow color */
+    color: #fff; 
     transition: color 0.3s ease, transform 0.3s ease;
     display: inline-block;
-    font-size: 1.5rem; /* Ensures consistent size */
-    margin-right: 0.3rem; /* Reduced spacing for consistency */
+    font-size: 1.5rem; 
+    margin-right: 0.3rem; 
 }
 .footer-cta:hover .arrow,
 .footer-cta.copied .arrow {
-    color: #ff0095; /* Arrow turns pink on hover and copied */
-    transform: translateX(3px); /* Slight movement */
+    color: #ff0095; 
+    transform: translateX(3px); 
 }
 
-/* Generic hidden state for all text states */
+
 .footer-cta .text-wrapper span {
     position: absolute;
     top: 0;
@@ -314,20 +314,20 @@ footer {
 
 .footer-cta .text-wrapper {
     position: relative;
-    width: 15ch;             /* adjust as needed if text is longer */
-    min-height: 1.5em;       /* enough room for one line */
-    overflow: hidden;        /* so text slides “inside” */
-    white-space: nowrap;     /* no line wraps */
+    width: 15ch;          
+    min-height: 1.5em;
+    overflow: hidden;        
+    white-space: nowrap;    
 }
 
-/* The default text overrides the hidden state */
+
 .footer-cta .text-wrapper span.default-text {
     opacity: 1;
     transform: translateY(0);
     color: #fff;
 }
 
-/* Hover effect: hide default, show hover text */
+
 .footer-cta:hover:not(.copied) .default-text {
     transform: translateY(-100%);
     opacity: 0;
@@ -335,13 +335,11 @@ footer {
 .footer-cta:hover:not(.copied) .hover-text {
     transform: translateY(0);
     opacity: 1;
-    color: #fff;  /* if you want hover text white */
+    color: #fff; 
 }
 
-/* 
-   COPIED effect: hide default & hover, show copied text 
-   plus flicker animation
-*/
+
+
 .footer-cta.copied .default-text,
 .footer-cta.copied .hover-text {
     transform: translateY(-100%);
@@ -351,46 +349,42 @@ footer {
     transform: translateY(0);
     opacity: 1;
     color: #ff0095;
-    /* Flicker for 2s. 
-       Use 'infinite' if you want it to blink the entire time; 
-       or 'forwards' if you want it to stop blinking at the end. */
-    animation: blinkFlicker 2s ease-in-out infinite;
+    animation: flicker 2s ease-in-out infinite;
 }
 
-/* Disable Hover During Copied State (more forceful) */
+
 .footer-cta.no-hover:hover .default-text,
 .footer-cta.no-hover:hover .hover-text {
     opacity: 0 !important;
     transform: translateY(-100%) !important;
 }
 
-/* Hide default & hover whenever .no-hover is present */
+
 .footer-cta.no-hover .default-text,
 .footer-cta.no-hover .hover-text {
     opacity: 0 !important;
     transform: translateY(-100%) !important;
 }
 
-/* Force copied-text to remain visible in .no-hover */
+
 .footer-cta.no-hover .copied-text {
     opacity: 1 !important;
     transform: translateY(0) !important;
-    animation: blinkFlicker 2s ease-in-out infinite;
+    animation: flicker 2s ease-in-out infinite;
 }
 
 /* Arrow Behavior in Copied State */
 .footer-cta.copied .arrow,
 .footer-cta.no-hover .arrow {
-    color: #ff0095;  /* Arrow stays pink */
-    transform: none; /* Prevent any movement */
+    color: #ff0095; 
+    transform: none; 
 }
 
 /* Flicker Animation for Copied Text */
-@keyframes blinkFlicker {
-    0%, 100% { opacity: 0; }
-    10%, 90% { opacity: 1; }
-    50% { opacity: 0.2; }
-  }
+@keyframes flicker {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
 
 /* ========== FOOTER BOTTOM ========== */
 .footer-bottom {
