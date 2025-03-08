@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Mattias Nordin - Under Construction</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Header (Minimal) -->
-  <header class="header">
-    <h1 class="logo">Mattias Nordin</h1>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mattias Nordin - Portfolio</title>
 
-  <!-- 3D Canvas or Abstract Background -->
-  <div id="canvas-container"></div>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="stylesheet.css" />
 
-  <!-- Overlay Message -->
-  <div class="overlay-message">
-    <h2>In Development...</h2>
-    <p>Stay tuned for something awesome!</p>
-  </div>
+    <!-- P5.js (required by VANTA.TRUNK) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
 
-  <!-- Footer (Minimal) -->
-  <footer class="footer">
-    <p>&copy; 2024 Mattias Nordin - All Rights Reserved</p>
-  </footer>
+    <!-- Three.js (some Vanta effects also need it, but TRUNK specifically needs p5) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-  <!-- Three.js (CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
-  <!-- Optionally: OrbitControls or other dependencies -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/controls/OrbitControls.js"></script>
+    <!-- Vanta TRUNK script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.trunk.min.js"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <div class="nav-container">
+        <h1 class="logo">Mattias Nordin</h1>
+      </div>
+    </header>
 
-  <!-- Your Custom Scripts -->
-  <script src="script.js"></script>
-</body>
+    <!-- Hero Section with Vanta.js Background -->
+    <div id="vanta-bg">
+      <div class="content">
+        <h2>In Development...</h2>
+     
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2024 Mattias Nordin - All Rights Reserved</p>
+    </footer>
+
+    <!-- Initialize Vanta.js -->
+    <script src="script.js"></script>
+  </body>
 </html>

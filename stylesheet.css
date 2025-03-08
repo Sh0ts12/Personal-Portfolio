@@ -1,65 +1,56 @@
-/* Reset */
+/* Reset default margins and paddings */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  /* Body */
-  body {
-    font-family: Arial, sans-serif;
-    background: #000; /* fallback */
-    color: #fff;
-    overflow: hidden; /* so no scrollbars if the 3D extends beyond window */
-    height: 100vh;
-  }
-  
-  /* Header */
-  .header {
+}
+
+/* Apply default fonts */
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: rgb(0, 0, 0);
+    color: white;
+    overflow: hidden; /* Prevents horizontal scroll */
+}
+
+/* Navbar */
+header {
+    padding: 1rem;
+    text-align: center;
+}
+
+#vanta-bg {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    z-index: 10; /* above the canvas */
-  }
-  
-  .logo {
-    font-size: 1.25rem;
-  }
-  
-  /* 3D Canvas Container */
-  #canvas-container {
-    width: 100%;
-    height: 100%;
-    position: fixed; /* fill screen behind everything */
     top: 0;
     left: 0;
-    z-index: 0;
-  }
-  
-  /* Overlay Message */
-  .overlay-message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100vh; /* Full screen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    z-index: 5;
-    color: #fff;
-  }
-  
-  .overlay-message h2 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Footer */
-  .footer {
+}
+
+.content {
+    position: relative;
+    z-index: 2; /* above the Vanta background */
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+/* Footer */
+footer {
+    color: rgb(255, 255, 255);
     position: absolute;
     bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    font-size: 0.85rem;
-    opacity: 0.8;
-  }
-  
+    width: 100%;
+    text-align: center;
+}
