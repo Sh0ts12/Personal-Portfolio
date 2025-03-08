@@ -1,482 +1,65 @@
-/* ========== Global Reset ========== */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-:root {
-    --container-padding: clamp(2.5em, 8vw, 8em);  
-}
-
-body {
-    font-family: 'Montserrat', Arial, sans-serif;
-    background: #000;
+  }
+  
+  /* Body */
+  body {
+    font-family: Arial, sans-serif;
+    background: #000; /* fallback */
     color: #fff;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* ========== HEADER ========== */
-header {
-    background: transparent;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 0.5rem var(--container-padding);
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    overflow: hidden; /* so no scrollbars if the 3D extends beyond window */
+    height: 100vh;
+  }
+  
+  /* Header */
+  .header {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10; /* above the canvas */
+  }
+  
+  .logo {
+    font-size: 1.25rem;
+  }
+  
+  /* 3D Canvas Container */
+  #canvas-container {
     width: 100%;
-}
-
-header .logo {
-    font-size: 1rem;
-    font-weight: lighter;
-    cursor: pointer;
-}
-
-/* ========== NAVBAR STYLES ========== */
-.nav-bar {
-    position: static;
+    height: 100%;
+    position: fixed; /* fill screen behind everything */
     top: 0;
     left: 0;
-    width: 100%;
-    z-index: 1000;
-    background: transparent;
-    padding: calc(var(--container-padding) / 2) 0;
-}
-
-/* Container for spacing */
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 100em;
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
-}
-
-/* Logo Styling */
-.nav-logo a {
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 1.2rem;
-    font-weight: 450;
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.nav-logo a:hover {
-    color: #ff0095;
-}
-
-/* Navigation Links */
-.nav-links ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links a {
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #ff0095;
-}
-
-header .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-}
-
-header .nav-links a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-header .nav-links a:hover {
-    color: #ff0095;
-}
-
-/* ========== HERO SECTION ========== */
-#hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-    text-align: center;
-    padding: 2rem var(--container-padding);
-    position: relative;
-    overflow: hidden;
-    background: transparent;
-}
-
-.hero-content p {
-    font-size: clamp(1.5rem, 2vw, 2rem);
-    font-weight: 400;
-    line-height: 1.5;
-    max-width: 60ch;
-    margin: 0 auto 2rem;
-    text-align: center;
-}
-
-.hero-content .highlight {
-    color: #ff0095;
-    font-weight: lighter;
-}
-
-.hero-content .scroll {
+    z-index: 0;
+  }
+  
+  /* Overlay Message */
+  .overlay-message {
     position: absolute;
-    bottom: 2rem;
-    right: var(--container-padding);
-    font-size: 0.9rem;
-    opacity: 0.7;
-    text-align: right;
-    white-space: nowrap;
-}
-
-/* ========== PROJECTS SECTION ========== */
-
-/* Stripe Styles */
-.stripe {
-    width: 100%;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.395);
-}
-
-.stripe.last {
-    background-color: rgba(255, 255, 255, 0.395);
-}
-
-#projects {
-    padding: 4rem 0;
-    margin-top: 4rem;
-    margin-bottom: 10rem;
-}
-
-.grid-sub-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 450;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.626);
-    padding-left: 1rem;
-}
-
-/* Project Grid */
-.work-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* Individual Project Item */
-.project-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 1.5rem;
-    cursor: pointer;
-    position: relative;
-    transition: background 0.3s ease;
-}
-
-/* Project Title */
-.project-title {
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-weight: 450;
-    font-size: clamp(1.8em, 2vw, 2.5em);
-    color: #fff;
-    padding-left: 1rem;
-}
-
-.project-category {
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-weight: 400;
-    font-size: clamp(1em, 1vw, 1.2em);
-    color: rgba(200, 200, 200, 0.7);
-    text-align: right;
-    padding-right: 1rem;
-}
-
-/* Hover Effects */
-.project-title,
-.project-category {
-    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-    color: #ffffff;
-    opacity: 0.9;
-}
-
-.project-item:hover .project-title {
-    transform: translateX(-10px);
-    opacity: 0.5;
-    color: #d1d1d1;
-}
-
-.project-item:hover .project-category {
-    transform: translateX(10px);
-    opacity: 0.5;
-    color: #d1d1d1;
-}
-
-/* ========== FOOTER ========== */
-footer {
-    background: #000;
-    padding: 6rem var(--container-padding);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-}
-
-/* Footer Top Section */
-.footer-top {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.footer-title {
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 1rem;
-}
-
-/* ========== FOOTER CTA BUTTON ========== */
-.footer-cta {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 600;
-    text-decoration: none;
+    z-index: 5;
     color: #fff;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem; 
-    overflow: hidden;
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-
-.footer-cta .default-text,
-.footer-cta .hover-text {
-  color: #fff;       
-}
-
-.footer-cta .copied-text {
-  color: #ff0095;   
-}
-
-/* Arrow Styling */
-.footer-cta .arrow {
-    color: #fff; 
-    transition: color 0.3s ease, transform 0.3s ease;
-    display: inline-block;
-    font-size: 1.5rem; 
-    margin-right: 0.3rem; 
-}
-.footer-cta:hover .arrow,
-.footer-cta.copied .arrow {
-    color: #ff0095; 
-    transform: translateX(3px); 
-}
-
-
-.footer-cta .text-wrapper span {
+  }
+  
+  .overlay-message h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Footer */
+  .footer {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: left;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0;
-    transform: translateY(100%);
-}
-
-.footer-cta .text-wrapper {
-    position: relative;
-    width: 15ch;          
-    min-height: 1.5em;
-    overflow: hidden;        
-    white-space: nowrap;    
-}
-
-
-.footer-cta .text-wrapper span.default-text {
-    opacity: 1;
-    transform: translateY(0);
-    color: #fff;
-}
-
-
-.footer-cta:hover:not(.copied) .default-text {
-    transform: translateY(-100%);
-    opacity: 0;
-}
-.footer-cta:hover:not(.copied) .hover-text {
-    transform: translateY(0);
-    opacity: 1;
-    color: #fff; 
-}
-
-
-
-.footer-cta.copied .default-text,
-.footer-cta.copied .hover-text {
-    transform: translateY(-100%);
-    opacity: 0;
-}
-.footer-cta.copied .copied-text {
-    transform: translateY(0);
-    opacity: 1;
-    color: #ff0095;
-    animation: flicker 1.2s ease-in-out forwards;
-}
-
-
-/* responsable for not allowing for overlapping of end animation*/
-.footer-cta.no-hover .default-text,
-.footer-cta.no-hover .hover-text {
-    opacity: 0 !important;
-    transform: translateY(-100%) !important;
-}
-
-
-.footer-cta.no-hover .copied-text {
-    opacity: 1 ;
-    transform: translateY(0) ;
-    animation: flicker 2s ease-in-out forwards;
-}
-
-/* Arrow Behavior in Copied State */
-.footer-cta.copied .arrow,
-.footer-cta.no-hovers .arrow {
-    color: #ff0095; 
-    transform: none; 
-}
-
-/* Flicker Animation for Copied Text */
-@keyframes flicker {
-    0% {opacity:0;}
-    9% {opacity:0;}
-    10% {opacity:.5;}
-    13% {opacity:0;}
-    20% {opacity:.5;}
-    25% {opacity:1;}
-    }
-
-/* Footer Details Wrapper */
-.footer-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 2rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
-
-/* Footer Info Section */
-.footer-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: flex-start;
-    text-align: left;
-}
-
-.info-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 1.5rem; 
-}
-
-.info-list li {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.info-title {
-    font-size: 1rem;
-    font-weight: 450;
-    color: rgba(255, 255, 255, 0.7);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.info-subtitle {
-    font-size: clamp(0.9rem, 1vw, 1rem);
-    font-weight: 600;
-    color: #fff;
-}
-
-/* Footer Socials Section */
-.footer-socials {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: flex-start;
-    text-align: left;
-}
-
-.socials-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 1.5rem; 
-}
-
-.socials-list li {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.socials-title {
-    font-size: 1rem;
-    font-weight: 450;
-    color: rgba(255, 255, 255, 0.7);
-    text-transform: uppercse;
-    letter-spacing: 0.05em;
-}
-
-.socials-list a {
-    font-size: clamp(0.9rem, 1vw, 1rem);
-    text-decoration: none;
-    color: #fff;
-    transition: color 0.3s ease;
-}
-
-.socials-list a:hover {
-    color: #ff0095;
-}
-
-/* ========== CONTAINER STYLES ========== */
-.container {
-    margin: 0 auto;
-    padding-left: var(--container-padding);
-    padding-right: var(--container-padding);
-    max-width: 100em;
-}
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+  
