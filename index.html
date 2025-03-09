@@ -2,43 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>Mattias Nordin - Under Construction</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mattias Nordin - Portfolio</title>
 
-    <!-- Link to external stylesheet -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="stylesheet.css" />
 
-    <!-- P5.js (required by VANTA.TRUNK) -->
+    <!-- Vanta dependencies, credits:https://www.vantajs.com/  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
-
-    <!-- Three.js (some Vanta effects also need it, but TRUNK specifically needs p5) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <!-- Vanta TRUNK script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.trunk.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.trunk.min.js"></script>
   </head>
   <body>
-    <!-- Navbar -->
-    <header>
-      <div class="nav-container">
-        <h1 class="logo">Mattias Nordin</h1>
+    <header class="nav-bar">
+      <div class="container nav-container">
+        <div class="nav-logo">
+          <a href="#">Mattias Nordin</a>
+        </div>
+        <nav class="nav-links">
+          <ul>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Resume</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
 
-    <!-- Hero Section with Vanta.js Background -->
-    <div id="vanta-bg">
-      <div class="content">
-        <h2>In Development...</h2>
-     
+    <section id="hero">
+      <div id="vanta-bg"></div>
+      <div class="blur-overlay"></div>
+      <div class="hero-content">
+        <p class="glow-text">STATUS: IN DEVELOPMENT</p>
       </div>
-    </div>
+    </section>
 
-    <!-- Footer -->
     <footer>
-      <p>© 2024 Mattias Nordin - All Rights Reserved</p>
+      <p>© 2025 Mattias Nordin - All Rights Reserved</p>
     </footer>
 
-    <!-- Initialize Vanta.js -->
     <script src="script.js"></script>
   </body>
 </html>

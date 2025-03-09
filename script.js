@@ -1,17 +1,23 @@
-document.addEventListener("DOMContentLoaded", function () {
-  VANTA.TRUNK({
-    el: "#vanta-bg",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 200.00,
-    scale: 1.0,
-    scaleMobile: 1.00,
-    spacing: 3,
-    chaos: 4, 
-    backgroundColor: 0x000,
-    color:0xff0095,
+const cssVar = (variable) =>
+  getComputedStyle(document.documentElement).getPropertyValue(variable).trim();
 
+let vantaEffect;
+document.addEventListener("DOMContentLoaded", () => {
+  vantaEffect = VANTA.TRUNK({
+    el: "#vanta-bg",
+    mouseControls: false,
+    touchControls: false,
+    gyroControls: false,
+    minHeight: 200.0,
+    minWidth: 200.0,
+    scale: 1,
+    scaleMobile: 1.0,
+    spacing: 1,
+    chaos: 5.7,
+    backgroundColor: 0x000,
+    color: parseInt(cssVar("--sphere-color").substring(1), 16),
   });
+});
+window.addEventListener("resize", () => {
+  vantaEffect.resize();
 });
