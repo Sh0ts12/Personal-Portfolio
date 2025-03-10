@@ -171,8 +171,8 @@ header .nav-links a:hover {
   width: 100%;
   min-width: 40px;
   padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.31);
-  backdrop-filter: blur(2.3px);
+  background: rgba(0, 0, 0, 0.622);
+  backdrop-filter: blur(0px);
   border-radius: 8px;
   z-index: 1;
 }
