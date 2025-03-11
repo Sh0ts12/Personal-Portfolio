@@ -246,7 +246,6 @@ footer {
 
 /* For screens 768px wide and below */
 @media (max-width: 768px) {
-  /* NAVIGATION: Stack logo and nav links vertically */
   .nav-container {
     flex-direction: row;
     gap: 1rem;
@@ -257,14 +256,12 @@ footer {
     gap: 1rem;
   }
 
-  /* HERO SECTION: Let the text wrap and adjust font-size */
   .hero-content {
-    white-space: normal; /* ensures text wraps */
+    white-space: normal;
     font-size: clamp(1.2rem, 5vw, 2.5rem);
-    padding: 1rem; /* some extra padding for breathing room */
+    padding: 1rem;
   }
 
-  /* FOOTER: Stack items vertically */
   .footer-row {
     flex-direction: column;
     align-items: center;
@@ -273,15 +270,12 @@ footer {
   }
 }
 
-
-
 /* For screens 480px wide and below */
 @media (max-width: 480px) {
-  /* Further adjust hero text size for very small devices */
   .hero-content {
     font-size: clamp(1rem, 6vw, 2rem);
   }
-  /* Optionally reduce overall footer padding if needed */
+
   footer {
     padding: 3rem 0;
   }
