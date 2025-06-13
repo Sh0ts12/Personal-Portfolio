@@ -353,7 +353,7 @@ footer {
 }
 
 
-/* responsable for not allowing for overlapping of end animation*/
+/* responsible for preventing overlapping of end animation */
 .footer-cta.no-hover .default-text,
 .footer-cta.no-hover .hover-text {
     opacity: 0 !important;
@@ -369,7 +369,7 @@ footer {
 
 /* Arrow Behavior in Copied State */
 .footer-cta.copied .arrow,
-.footer-cta.no-hovers .arrow {
+.footer-cta.no-hover .arrow {
     color: #ff0095; 
     transform: none; 
 }
@@ -458,7 +458,7 @@ footer {
     font-size: 1rem;
     font-weight: 450;
     color: rgba(255, 255, 255, 0.7);
-    text-transform: uppercse;
+    text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
